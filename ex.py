@@ -1,17 +1,16 @@
-import doubly_linked_list
-
-class Queue:
-    def __init__(self):
-        self.data = doubly_linked_list.DoublyLinkedList()
+def group_sort(array): 
+    hash_table = {}
+    new_array = []
     
-    def enqueue(self, element):
-        self.data.append(element)
+    for value in array:
+        if value in hash_table:
+            hash_table[value] += 1
+        else:
+            hash_table[value] = 1
     
-    def dequeue(self):
-        dequeued_node = self.data.pop_head()
-        return dequeued_node.data
-
-    def read(self):
-        if not self.data.first_node:
-            return None
-        return self.data.first_node.data
+    for key in hash_table: 
+        count = hash_table[key] 
+        for i in range(count):
+            new_array.append(key) 
+            
+    return new_array
